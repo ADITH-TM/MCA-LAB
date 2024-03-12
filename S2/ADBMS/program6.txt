@@ -1,0 +1,239 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| adithdb            |
+| db                 |
+| emp                |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+7 rows in set (0.34 sec)
+
+mysql> use adithdb;
+
+Database changed
+
+mysql> create table salesman(salesman_id int(20) primary key,name varchar(50),city varchar(50),commission float(50));
+Query OK, 0 rows affected (0.89 sec)
+
+mysql> insert into salesman values(5001,'James Hoog','New york',0.15);
+Query OK, 1 row affected (0.10 sec)
+
+mysql> insert into salesman values(5002,'NAil Knite','Paris',0.13);
+Query OK, 1 row affected (0.09 sec)
+
+mysql> insert into salesman values(5003,'Pit Alex','London',0.11);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into salesman values(5006,'Mc Lyon','Paris',0.14);
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into salesman values(5007,'Paul Adam','Rome',0.13);
+Query OK, 1 row affected (0.09 sec)
+
+mysql> insert into salesman values(5005,'Lauson Hen','San Jose',0.12);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from salesman;
++-------------+------------+----------+------------+
+| salesman_id | name       | city     | commission |
++-------------+------------+----------+------------+
+|        5001 | James Hoog | New york |       0.15 |
+|        5002 | NAil Knite | Paris    |       0.13 |
+|        5003 | Pit Alex   | London   |       0.11 |
+|        5005 | Lauson Hen | San Jose |       0.12 |
+|        5006 | Mc Lyon    | Paris    |       0.14 |
+|        5007 | Paul Adam  | Rome     |       0.13 |
++-------------+------------+----------+------------+
+6 rows in set (0.03 sec)
+
+mysql> create table customer(customer_id int(50) primary key,cust_name varchar(50),city varchar(50),grade int(50),salesman_id int(50));
+Query OK, 0 rows affected (0.34 sec)
+
+mysql> alter table customer add foreign key (salesman_id) references salesman(salesman_id);
+Query OK, 0 rows affected (1.26 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> insert into customer values(3002,'Nick Rimando','New York',100,5001);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into customer values(3007,'Brad Davis','New York',200,5001);
+Query OK, 1 row affected (0.11 sec)
+
+mysql> insert into customer values(3005,'Graham Zusi','California',200,5002);
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into customer values(3008,'Julian Green','London',300,5002);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into customer values(3004,'Fabian Johnson','Paris',300,5006);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into customer values(3009,'Geoff Cameron','Berlin',100,5003);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into customer values(3003,'Jozy Altido','Moscow',200,5007);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into customer values(3001,'Brad Guzan','London',100,5005);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select * from customer;
++-------------+----------------+------------+-------+-------------+
+| customer_id | cust_name      | city       | grade | salesman_id |
++-------------+----------------+------------+-------+-------------+
+|        3001 | Brad Guzan     | London     |   100 |        5005 |
+|        3002 | Nick Rimando   | New York   |   100 |        5001 |
+|        3003 | Jozy Altido    | Moscow     |   200 |        5007 |
+|        3004 | Fabian Johnson | Paris      |   300 |        5006 |
+|        3005 | Graham Zusi    | California |   200 |        5002 |
+|        3007 | Brad Davis     | New York   |   200 |        5001 |
+|        3008 | Julian Green   | London     |   300 |        5002 |
+|        3009 | Geoff Cameron  | Berlin     |   100 |        5003 |
++-------------+----------------+------------+-------+-------------+
+8 rows in set (0.00 sec)
+
+mysql> create table porder(ord_no int(50) primary key,purch_amt float(50),ord_date date,customer_id int(50),salesman_id int(50));
+Query OK, 0 rows affected (0.32 sec)
+
+mysql> alter table porder add foreign key (salesman_id) references salesman(salesman_id);
+Query OK, 0 rows affected (0.81 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table porder add foreign key (customer_id) references customer(customer_id);
+Query OK, 0 rows affected (0.66 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> insert into porder values(70001,150.5,'2012-10-05',3005,5002);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into porder values(70009,270.65,'2012-09-10',3001,5005);
+Query OK, 1 row affected (0.07 sec)
+
+mysql> insert into porder values(70002,65.26,'2012-10-05',3002,5001);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into porder values(70004,110.5,'2012-08-17',3009,5003);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into porder values(70007,948.5,'2012-09-10',3005,5002);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into porder values(70005,2400.6,'2012-07-27',3007,5001);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into porder values(70008,5760,'2012-09-10',3002,5001);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into porder values(70010,1983.43,'2012-10-10',3004,5006);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into porder values(70003,2480.4,'2012-10-10',3009,5003);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into porder values(70012,250.45,'2012-06-27',3008,5002);
+Query OK, 1 row affected (0.10 sec)
+
+mysql> insert into porder values(70011,75.29,'2012-08-17',3003,5007);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into porder values(70013,3045.6,'2012-04-25',3002,5001);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> select * from porder;
++--------+-----------+------------+-------------+-------------+
+| ord_no | purch_amt | ord_date   | customer_id | salesman_id |
++--------+-----------+------------+-------------+-------------+
+|  70001 |     150.5 | 2012-10-05 |        3005 |        5002 |
+|  70002 |     65.26 | 2012-10-05 |        3002 |        5001 |
+|  70003 |    2480.4 | 2012-10-10 |        3009 |        5003 |
+|  70004 |     110.5 | 2012-08-17 |        3009 |        5003 |
+|  70005 |    2400.6 | 2012-07-27 |        3007 |        5001 |
+|  70007 |     948.5 | 2012-09-10 |        3005 |        5002 |
+|  70008 |      5760 | 2012-09-10 |        3002 |        5001 |
+|  70009 |    270.65 | 2012-09-10 |        3001 |        5005 |
+|  70010 |   1983.43 | 2012-10-10 |        3004 |        5006 |
+|  70011 |     75.29 | 2012-08-17 |        3003 |        5007 |
+|  70012 |    250.45 | 2012-06-27 |        3008 |        5002 |
+|  70013 |    3045.6 | 2012-04-25 |        3002 |        5001 |
++--------+-----------+------------+-------------+-------------+
+12 rows in set (0.00 sec)
+
+mysql> create view newyorkstaff as select*from salesman where city='New York';
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> select * from newyorkstaff;
++-------------+------------+----------+------------+
+| salesman_id | name       | city     | commission |
++-------------+------------+----------+------------+
+|        5001 | James Hoog | New york |       0.15 |
++-------------+------------+----------+------------+
+1 row in set (0.02 sec)
+
+create view gradecount(grade,number)as select grade,count(*)from customer grou' at line 1
+mysql> create view gradecount(grade,number)as select grade,count(*)from customer group by grade;
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> select * from gradecount;
++-------+--------+
+| grade | number |
++-------+--------+
+|   100 |      3 |
+|   200 |      3 |
+|   300 |      2 |
++-------+--------+
+3 rows in set (0.07 sec)
+
+mysql> create view totalforday as select ord_date,count(distinct customer_id),avg(purch_amt),sum(purch_amt)from porder group by ord_date;
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> select * from totalforday;
++------------+-----------------------------+-------------------+--------------------+
+| ord_date   | count(distinct customer_id) | avg(purch_amt)    | sum(purch_amt)     |
++------------+-----------------------------+-------------------+--------------------+
+| 2012-04-25 |                           1 |            3045.6 |             3045.6 |
+| 2012-06-27 |                           1 |            250.45 |             250.45 |
+| 2012-07-27 |                           1 |            2400.6 |             2400.6 |
+| 2012-08-17 |                           2 | 92.89500000000001 | 185.79000000000002 |
+| 2012-09-10 |                           3 | 2326.383333333333 |            6979.15 |
+| 2012-10-05 |                           2 |            107.88 |             215.76 |
+| 2012-10-10 |                           2 |          2231.915 |            4463.83 |
++------------+-----------------------------+-------------------+--------------------+
+7 rows in set (0.02 sec)
+
+mysql> create view sorder as select salesman_id,ord_no,customer_id from porder where ord_date in ('2012-08-17','2012-10-10');
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> select * from sorder;
++-------------+--------+-------------+
+| salesman_id | ord_no | customer_id |
++-------------+--------+-------------+
+|        5003 |  70003 |        3009 |
+|        5003 |  70004 |        3009 |
+|        5006 |  70010 |        3004 |
+|        5007 |  70011 |        3003 |
++-------------+--------+-------------+
+4 rows in set (0.00 sec)
+
+mysql> CREATE VIEW elitsalesman AS SELECT b.ord_date,a.salesman_id,a.name FROM salesman a, porder b WHERE a.salesman_id=b.salesman_id AND b.purch_amt=(SELECT MAX(purch_amt)FROM porder c WHERE c.ord_date=b.ord_date);
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> select * from elitsalesman;
++------------+-------------+------------+
+| ord_date   | salesman_id | name       |
++------------+-------------+------------+
+| 2012-07-27 |        5001 | James Hoog |
+| 2012-09-10 |        5001 | James Hoog |
+| 2012-04-25 |        5001 | James Hoog |
+| 2012-10-05 |        5002 | NAil Knite |
+| 2012-06-27 |        5002 | NAil Knite |
+| 2012-10-10 |        5003 | Pit Alex   |
+| 2012-08-17 |        5003 | Pit Alex   |
++------------+-------------+------------+
+7 rows in set (0.00 sec)
+
+mysql> 
+
