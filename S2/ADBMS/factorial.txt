@@ -1,0 +1,24 @@
+mysql> delimiter //
+mysql> create procedure CalculateFactorial()
+    -> begin
+    -> declare a int default 5;
+    -> declare f int default 1;
+    -> while a > 0 do
+    -> set f = f * a;
+    -> set a = a - 1;
+    -> end while;
+    -> select concat('Factorial = ',f) as Result;
+    -> end //
+Query OK, 0 rows affected, 3 warnings (0.05 sec)
+
+mysql> delimiter ;
+mysql> call CalculateFactorial();
++-----------------+
+| Result          |
++-----------------+
+| Factorial = 120 |
++-----------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
