@@ -1,0 +1,23 @@
+mysql> delimiter //
+mysql> create procedure display()
+    -> begin
+    -> select * from student;
+    -> end
+    -> //
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> delimiter ;
+mysql> call display();
++--------+--------+--------+
+| rollno | name   | course |
++--------+--------+--------+
+|      1 | Albert | MCA    |
+|      2 | Adith  | MCA    |
+|      3 | Akash  | MCA    |
+|      4 | Antony | MCA    |
+|      5 | Bibin  | MCA    |
++--------+--------+--------+
+5 rows in set (0.04 sec)
+
+Query OK, 0 rows affected (0.04 sec)
+
