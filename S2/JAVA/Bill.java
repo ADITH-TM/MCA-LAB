@@ -18,8 +18,6 @@ class Order implements Calculation{
 		Name = n;
 		quantity = q;
 		price = p;
-		
-		
 	}
 	
 	@Override
