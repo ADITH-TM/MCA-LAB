@@ -1,0 +1,173 @@
+> use emp
+switched to db emp
+> db.createCollection("EMPL")
+{ "ok" : 1 }
+> db.EMPL.insertMany([
+... { "Empno": 1, "Name": "John Doe", "Salary": 60000, "Role": "Manager" },{ "Empno": 2, "Name": "Alice Smith", "Salary": 50000, "Role": "Developer" },{ "Empno": 3, "Name": "Hariharan", "Salary": 70000, "Role": "Supervisor" },{ "Empno": 4, "Name": "Ruby", "Salary": 50000, "Role": "Director" },{ "Empno": 5, "Name": "Kajol", "Salary": 40000, "Role": "Sales Manager" },{ "Empno": 6, "Name": "Albert", "Salary": 100000, "Role": "CEO" },{ "Empno": 7, "Name": "Adith", "Salary": 70000, "Role": "Senior developer" },{ "Empno": 8, "Name": "Bibin", "Salary": 90000, "Role": "CFO" },{ "Empno": 9, "Name": "Cheriyan", "Salary": 30000, "Role": "Junior Developer" },{ "Empno": 10, "Name": "Aswin", "Salary": 50000, "Role": "Software Engineer" }])
+{
+	"acknowledged" : true,
+	"insertedIds" : [
+		ObjectId("6615007099a5f58ee8da3cbd"),
+		ObjectId("6615007099a5f58ee8da3cbe"),
+		ObjectId("6615007099a5f58ee8da3cbf"),
+		ObjectId("6615007099a5f58ee8da3cc0"),
+		ObjectId("6615007099a5f58ee8da3cc1"),
+		ObjectId("6615007099a5f58ee8da3cc2"),
+		ObjectId("6615007099a5f58ee8da3cc3"),
+		ObjectId("6615007099a5f58ee8da3cc4"),
+		ObjectId("6615007099a5f58ee8da3cc5"),
+		ObjectId("6615007099a5f58ee8da3cc6")
+	]
+}
+> db.EMPL.find().pretty()
+{
+	"_id" : ObjectId("6615007099a5f58ee8da3cbd"),
+	"Empno" : 1,
+	"Name" : "John Doe",
+	"Salary" : 60000,
+	"Role" : "Manager"
+}
+{
+	"_id" : ObjectId("6615007099a5f58ee8da3cbe"),
+	"Empno" : 2,
+	"Name" : "Alice Smith",
+	"Salary" : 50000,
+	"Role" : "Developer"
+}
+{
+	"_id" : ObjectId("6615007099a5f58ee8da3cbf"),
+	"Empno" : 3,
+	"Name" : "Hariharan",
+	"Salary" : 70000,
+	"Role" : "Supervisor"
+}
+{
+	"_id" : ObjectId("6615007099a5f58ee8da3cc0"),
+	"Empno" : 4,
+	"Name" : "Ruby",
+	"Salary" : 50000,
+	"Role" : "Director"
+}
+{
+	"_id" : ObjectId("6615007099a5f58ee8da3cc1"),
+	"Empno" : 5,
+	"Name" : "Kajol",
+	"Salary" : 40000,
+	"Role" : "Sales Manager"
+}
+{
+	"_id" : ObjectId("6615007099a5f58ee8da3cc2"),
+	"Empno" : 6,
+	"Name" : "Albert",
+	"Salary" : 100000,
+	"Role" : "CEO"
+}
+{
+	"_id" : ObjectId("6615007099a5f58ee8da3cc3"),
+	"Empno" : 7,
+	"Name" : "Adith",
+	"Salary" : 70000,
+	"Role" : "Senior developer"
+}
+{
+	"_id" : ObjectId("6615007099a5f58ee8da3cc4"),
+	"Empno" : 8,
+	"Name" : "Bibin",
+	"Salary" : 90000,
+	"Role" : "CFO"
+}
+{
+	"_id" : ObjectId("6615007099a5f58ee8da3cc5"),
+	"Empno" : 9,
+	"Name" : "Cheriyan",
+	"Salary" : 30000,
+	"Role" : "Junior Developer"
+}
+{
+	"_id" : ObjectId("6615007099a5f58ee8da3cc6"),
+	"Empno" : 10,
+	"Name" : "Aswin",
+	"Salary" : 50000,
+	"Role" : "Software Engineer"
+}
+> db.EMPL.find({ "Role": "Manager" }).pretty()
+{
+	"_id" : ObjectId("6615007099a5f58ee8da3cbd"),
+	"Empno" : 1,
+	"Name" : "John Doe",
+	"Salary" : 60000,
+	"Role" : "Manager"
+}
+> db.EMPL.updateOne({"Name":"Albert"},{$set: {"Salary":200000} })
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+> db.EMPL.find().pretty()
+{
+	"_id" : ObjectId("6615007099a5f58ee8da3cbd"),
+	"Empno" : 1,
+	"Name" : "John Doe",
+	"Salary" : 60000,
+	"Role" : "Manager"
+}
+{
+	"_id" : ObjectId("6615007099a5f58ee8da3cbe"),
+	"Empno" : 2,
+	"Name" : "Alice Smith",
+	"Salary" : 50000,
+	"Role" : "Developer"
+}
+{
+	"_id" : ObjectId("6615007099a5f58ee8da3cbf"),
+	"Empno" : 3,
+	"Name" : "Hariharan",
+	"Salary" : 70000,
+	"Role" : "Supervisor"
+}
+{
+	"_id" : ObjectId("6615007099a5f58ee8da3cc0"),
+	"Empno" : 4,
+	"Name" : "Ruby",
+	"Salary" : 50000,
+	"Role" : "Director"
+}
+{
+	"_id" : ObjectId("6615007099a5f58ee8da3cc1"),
+	"Empno" : 5,
+	"Name" : "Kajol",
+	"Salary" : 40000,
+	"Role" : "Sales Manager"
+}
+{
+	"_id" : ObjectId("6615007099a5f58ee8da3cc2"),
+	"Empno" : 6,
+	"Name" : "Albert",
+	"Salary" : 200000,
+	"Role" : "CEO"
+}
+{
+	"_id" : ObjectId("6615007099a5f58ee8da3cc3"),
+	"Empno" : 7,
+	"Name" : "Adith",
+	"Salary" : 70000,
+	"Role" : "Senior developer"
+}
+{
+	"_id" : ObjectId("6615007099a5f58ee8da3cc4"),
+	"Empno" : 8,
+	"Name" : "Bibin",
+	"Salary" : 90000,
+	"Role" : "CFO"
+}
+{
+	"_id" : ObjectId("6615007099a5f58ee8da3cc5"),
+	"Empno" : 9,
+	"Name" : "Cheriyan",
+	"Salary" : 30000,
+	"Role" : "Junior Developer"
+}
+{
+	"_id" : ObjectId("6615007099a5f58ee8da3cc6"),
+	"Empno" : 10,
+	"Name" : "Aswin",
+	"Salary" : 50000,
+	"Role" : "Software Engineer"
+}
