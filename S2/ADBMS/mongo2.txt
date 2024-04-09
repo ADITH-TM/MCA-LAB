@@ -1,0 +1,232 @@
+> use ProductCatalog
+switched to db ProductCatalog
+> db.createCollection("Products")
+{ "ok" : 1 }
+> db.Products.insertMany([{ "ProductID": 1, "ProductName": "Laptop", "Price": 1000, "Quantity": 20 },{ "ProductID": 2, "ProductName": "Smartphone", "Price": 500, "Quantity": 30},{ "ProductID": 3, "ProductName": "Earphone", "Price": 100, "Quantity": 10 },{ "ProductID": 4, "ProductName": "Powerbank", "Price": 2000, "Quantity": 25},{ "ProductID": 5, "ProductName": "Android TV", "Price": 10000, "Quantity": 60 },{ "ProductID": 6, "ProductName": "Smart Watch", "Price": 5000, "Quantity": 40},{ "ProductID": 7, "ProductName": "Iron box", "Price": 2000, "Quantity": 40 },{ "ProductID": 8, "ProductName": "Washing Machine", "Price": 40000, "Quantity": 50},{ "ProductID": 9, "ProductName": "Home Theatre", "Price": 10000, "Quantity": 56 },{ "ProductID": 10, "ProductName": "Speaker", "Price": 20000, "Quantity": 60}])
+{
+	"acknowledged" : true,
+	"insertedIds" : [
+		ObjectId("6615061e99a5f58ee8da3cc7"),
+		ObjectId("6615061e99a5f58ee8da3cc8"),
+		ObjectId("6615061e99a5f58ee8da3cc9"),
+		ObjectId("6615061e99a5f58ee8da3cca"),
+		ObjectId("6615061e99a5f58ee8da3ccb"),
+		ObjectId("6615061e99a5f58ee8da3ccc"),
+		ObjectId("6615061e99a5f58ee8da3ccd"),
+		ObjectId("6615061e99a5f58ee8da3cce"),
+		ObjectId("6615061e99a5f58ee8da3ccf"),
+		ObjectId("6615061e99a5f58ee8da3cd0")
+	]
+}
+> db.Products.find().pretty()
+{
+	"_id" : ObjectId("6615061e99a5f58ee8da3cc7"),
+	"ProductID" : 1,
+	"ProductName" : "Laptop",
+	"Price" : 1000,
+	"Quantity" : 20
+}
+{
+	"_id" : ObjectId("6615061e99a5f58ee8da3cc8"),
+	"ProductID" : 2,
+	"ProductName" : "Smartphone",
+	"Price" : 500,
+	"Quantity" : 30
+}
+{
+	"_id" : ObjectId("6615061e99a5f58ee8da3cc9"),
+	"ProductID" : 3,
+	"ProductName" : "Earphone",
+	"Price" : 100,
+	"Quantity" : 10
+}
+{
+	"_id" : ObjectId("6615061e99a5f58ee8da3cca"),
+	"ProductID" : 4,
+	"ProductName" : "Powerbank",
+	"Price" : 2000,
+	"Quantity" : 25
+}
+{
+	"_id" : ObjectId("6615061e99a5f58ee8da3ccb"),
+	"ProductID" : 5,
+	"ProductName" : "Android TV",
+	"Price" : 10000,
+	"Quantity" : 60
+}
+{
+	"_id" : ObjectId("6615061e99a5f58ee8da3ccc"),
+	"ProductID" : 6,
+	"ProductName" : "Smart Watch",
+	"Price" : 5000,
+	"Quantity" : 40
+}
+{
+	"_id" : ObjectId("6615061e99a5f58ee8da3ccd"),
+	"ProductID" : 7,
+	"ProductName" : "Iron box",
+	"Price" : 2000,
+	"Quantity" : 40
+}
+{
+	"_id" : ObjectId("6615061e99a5f58ee8da3cce"),
+	"ProductID" : 8,
+	"ProductName" : "Washing Machine",
+	"Price" : 40000,
+	"Quantity" : 50
+}
+{
+	"_id" : ObjectId("6615061e99a5f58ee8da3ccf"),
+	"ProductID" : 9,
+	"ProductName" : "Home Theatre",
+	"Price" : 10000,
+	"Quantity" : 56
+}
+{
+	"_id" : ObjectId("6615061e99a5f58ee8da3cd0"),
+	"ProductID" : 10,
+	"ProductName" : "Speaker",
+	"Price" : 20000,
+	"Quantity" : 60
+}
+> db.Products.updateOne({"ProductName":"Laptop"},{$inc: {"Quantity": 10} })
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+> db.Products.find().pretty()
+{
+	"_id" : ObjectId("6615061e99a5f58ee8da3cc7"),
+	"ProductID" : 1,
+	"ProductName" : "Laptop",
+	"Price" : 1000,
+	"Quantity" : 30
+}
+{
+	"_id" : ObjectId("6615061e99a5f58ee8da3cc8"),
+	"ProductID" : 2,
+	"ProductName" : "Smartphone",
+	"Price" : 500,
+	"Quantity" : 30
+}
+{
+	"_id" : ObjectId("6615061e99a5f58ee8da3cc9"),
+	"ProductID" : 3,
+	"ProductName" : "Earphone",
+	"Price" : 100,
+	"Quantity" : 10
+}
+{
+	"_id" : ObjectId("6615061e99a5f58ee8da3cca"),
+	"ProductID" : 4,
+	"ProductName" : "Powerbank",
+	"Price" : 2000,
+	"Quantity" : 25
+}
+{
+	"_id" : ObjectId("6615061e99a5f58ee8da3ccb"),
+	"ProductID" : 5,
+	"ProductName" : "Android TV",
+	"Price" : 10000,
+	"Quantity" : 60
+}
+{
+	"_id" : ObjectId("6615061e99a5f58ee8da3ccc"),
+	"ProductID" : 6,
+	"ProductName" : "Smart Watch",
+	"Price" : 5000,
+	"Quantity" : 40
+}
+{
+	"_id" : ObjectId("6615061e99a5f58ee8da3ccd"),
+	"ProductID" : 7,
+	"ProductName" : "Iron box",
+	"Price" : 2000,
+	"Quantity" : 40
+}
+{
+	"_id" : ObjectId("6615061e99a5f58ee8da3cce"),
+	"ProductID" : 8,
+	"ProductName" : "Washing Machine",
+	"Price" : 40000,
+	"Quantity" : 50
+}
+{
+	"_id" : ObjectId("6615061e99a5f58ee8da3ccf"),
+	"ProductID" : 9,
+	"ProductName" : "Home Theatre",
+	"Price" : 10000,
+	"Quantity" : 56
+}
+{
+	"_id" : ObjectId("6615061e99a5f58ee8da3cd0"),
+	"ProductID" : 10,
+	"ProductName" : "Speaker",
+	"Price" : 20000,
+	"Quantity" : 60
+}
+> db.Products.deleteOne({"ProductName":"Smartphone"})
+{ "acknowledged" : true, "deletedCount" : 1 }
+> db.Products.find().pretty()
+{
+	"_id" : ObjectId("6615061e99a5f58ee8da3cc7"),
+	"ProductID" : 1,
+	"ProductName" : "Laptop",
+	"Price" : 1000,
+	"Quantity" : 30
+}
+{
+	"_id" : ObjectId("6615061e99a5f58ee8da3cc9"),
+	"ProductID" : 3,
+	"ProductName" : "Earphone",
+	"Price" : 100,
+	"Quantity" : 10
+}
+{
+	"_id" : ObjectId("6615061e99a5f58ee8da3cca"),
+	"ProductID" : 4,
+	"ProductName" : "Powerbank",
+	"Price" : 2000,
+	"Quantity" : 25
+}
+{
+	"_id" : ObjectId("6615061e99a5f58ee8da3ccb"),
+	"ProductID" : 5,
+	"ProductName" : "Android TV",
+	"Price" : 10000,
+	"Quantity" : 60
+}
+{
+	"_id" : ObjectId("6615061e99a5f58ee8da3ccc"),
+	"ProductID" : 6,
+	"ProductName" : "Smart Watch",
+	"Price" : 5000,
+	"Quantity" : 40
+}
+{
+	"_id" : ObjectId("6615061e99a5f58ee8da3ccd"),
+	"ProductID" : 7,
+	"ProductName" : "Iron box",
+	"Price" : 2000,
+	"Quantity" : 40
+}
+{
+	"_id" : ObjectId("6615061e99a5f58ee8da3cce"),
+	"ProductID" : 8,
+	"ProductName" : "Washing Machine",
+	"Price" : 40000,
+	"Quantity" : 50
+}
+{
+	"_id" : ObjectId("6615061e99a5f58ee8da3ccf"),
+	"ProductID" : 9,
+	"ProductName" : "Home Theatre",
+	"Price" : 10000,
+	"Quantity" : 56
+}
+{
+	"_id" : ObjectId("6615061e99a5f58ee8da3cd0"),
+	"ProductID" : 10,
+	"ProductName" : "Speaker",
+	"Price" : 20000,
+	"Quantity" : 60
+}
+> 
+
