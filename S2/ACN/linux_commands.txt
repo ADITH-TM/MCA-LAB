@@ -1,0 +1,224 @@
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ ls
+dir  dir1  file1.txt  file2.txt  file3.txt
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ echo hello
+hello
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ read
+hello world
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ more file1.txt
+This is line 1
+This is line 2
+
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ less file1.txt
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ cat file1.txt
+This is line 1
+This is line 2
+
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ cd dir1
+lab1@lab1-OptiPlex-390:~/Desktop/Akash/dir1$ cd ..
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ mkdir dir2
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ ls
+dir  dir1  dir2  file1.txt  file2.txt  file3.txt
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ pwd
+/home/lab1/Desktop/Akash
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ find file1.txt
+file1.txt
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ mv dir2 file3.txt
+mv: cannot overwrite non-directory 'file3.txt' with directory 'dir2'
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ mv file3.txt dir2
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ cd dir2
+lab1@lab1-OptiPlex-390:~/Desktop/Akash/dir2$ ls
+file3.txt
+lab1@lab1-OptiPlex-390:~/Desktop/Akash/dir2$ cd ..
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ ls
+dir  dir1  dir2  file1.txt  file2.txt
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ cp file2.txt dir2
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ cd dir2
+lab1@lab1-OptiPlex-390:~/Desktop/Akash/dir2$ ls
+file2.txt  file3.txt
+lab1@lab1-OptiPlex-390:~/Desktop/Akash/dir2$ cd ..
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ cd dir2
+lab1@lab1-OptiPlex-390:~/Desktop/Akash/dir2$ rm file2.txt
+lab1@lab1-OptiPlex-390:~/Desktop/Akash/dir2$ ls
+file3.txt
+lab1@lab1-OptiPlex-390:~/Desktop/Akash/dir2$ cd ..
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ tar cvf file.tar *.txt  
+file1.txt
+file2.txt
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ ls
+dir  dir1  dir2  file1.txt  file2.txt  file.tar
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ wc file1.txt
+ 3  8 31 file1.txt
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ cut -d ' ' -f2 file1.txt
+is
+is
+
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ cut -d ' ' -f3 file1.txt
+line
+line
+
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ cut -b 2  file1.txt
+h
+h
+
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ cut -c 2-6 file1.txt
+his i
+his i
+
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ paset file1.txt file2.txt
+No command 'paset' found, did you mean:
+ Command 'xpaset' from package 'xpa-tools' (universe)
+ Command 'psset' from package 'a2ps' (universe)
+ Command 'paste' from package 'coreutils' (main)
+paset: command not found
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ paste file1.txt file2.txt
+This is line 1	hello
+This is line 2	
+	
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ head file1.txt
+This is line 1
+This is line 2
+
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ head file1.txt file2.txt
+==> file1.txt <==
+This is line 1
+This is line 2
+
+
+==> file2.txt <==
+hello
+
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ tail file1.txt file2.txt
+==> file1.txt <==
+This is line 1
+This is line 2
+
+
+==> file2.txt <==
+hello
+
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ tail -1 file1.txt file2.txt
+tail: option used in invalid context -- 1
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ tail -1 file1.txt
+
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ tail -2 file1.txt
+This is line 2
+
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ grep 1 file1.txt
+This is line 1
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ grep is file1.txt
+This is line 1
+This is line 2
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ expr 2 + 3
+5
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ chmod +x new.sh
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ sudo useradd akash
+[sudo] password for lab1: 
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ sudo usermod akash
+usermod: no options
+Usage: usermod [options] LOGIN
+
+Options:
+  -c, --comment COMMENT         new value of the GECOS field
+  -d, --home HOME_DIR           new home directory for the user account
+  -e, --expiredate EXPIRE_DATE  set account expiration date to EXPIRE_DATE
+  -f, --inactive INACTIVE       set password inactive after expiration
+                                to INACTIVE
+  -g, --gid GROUP               force use GROUP as new primary group
+  -G, --groups GROUPS           new list of supplementary GROUPS
+  -a, --append                  append the user to the supplemental GROUPS
+                                mentioned by the -G option without removing
+                                him/her from other groups
+  -h, --help                    display this help message and exit
+  -l, --login NEW_LOGIN         new value of the login name
+  -L, --lock                    lock the user account
+  -m, --move-home               move contents of the home directory to the
+                                new location (use only with -d)
+  -o, --non-unique              allow using duplicate (non-unique) UID
+  -p, --password PASSWORD       use encrypted password for the new password
+  -R, --root CHROOT_DIR         directory to chroot into
+  -s, --shell SHELL             new login shell for the user account
+  -u, --uid UID                 new UID for the user account
+  -U, --unlock                  unlock the user account
+  -v, --add-subuids FIRST-LAST  add range of subordinate uids
+  -V, --del-subuids FIRST-LAST  remove range of subordinate uids
+  -w, --add-subgids FIRST-LAST  add range of subordinate gids
+  -W, --del-subgids FIRST-LAST  remove range of subordinate gids
+  -Z, --selinux-user SEUSER     new SELinux user mapping for the user account
+
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ sudo passwd akash
+Enter new UNIX password: 
+Retype new UNIX password: 
+passwd: password updated successfully
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ sudo userdel akash
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ chown file1.txt lab1
+chown: invalid user: ‘file1.txt’
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ chown lab1 file1.txt
+chown: changing ownership of 'file1.txt': Operation not permitted
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ sudo chown lab1 file1.txt
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ df
+Filesystem     1K-blocks    Used Available Use% Mounted on
+udev              921436       0    921436   0% /dev
+tmpfs             188696    5984    182712   4% /run
+/dev/sda5       87067992 7266404  75355740   9% /
+tmpfs             943480     212    943268   1% /dev/shm
+tmpfs               5120       4      5116   1% /run/lock
+tmpfs             943480       0    943480   0% /sys/fs/cgroup
+tmpfs             188696      56    188640   1% /run/user/1000
+tmpfs             188696       8    188688   1% /run/user/108
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ top
+
+top - 15:10:56 up  1:00,  1 user,  load average: 0.16, 0.11, 0.09
+Tasks: 193 total,   1 running, 192 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  2.8 us,  0.9 sy,  0.0 ni, 96.0 id,  0.3 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem :  1886960 total,   221796 free,  1062820 used,   602344 buff/cache
+KiB Swap:  2006012 total,  1909356 free,    96656 used.   367296 avail Mem 
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND         
+ 1790 lab1      20   0 1245144 100576  58364 S   7.3  5.3   1:28.69 compiz          
+ 3967 lab1      20   0 3065904 305092 155620 S   5.0 16.2   1:38.16 firefox         
+  855 root      20   0  417016  70648  59620 S   2.9  3.7   1:04.54 Xorg            
+ 3780 lab1      20   0  661344  35612  27200 S   0.8  1.9   0:06.21 gnome-terminal- 
+   84 root      20   0       0      0      0 S   0.3  0.0   0:01.09 kworker/u32:3   
+  819 mysql     20   0 1180016 132236  13896 S   0.3  7.0   0:01.92 mysqld          
+ 1669 lab1      20   0  345656   7324   5416 S   0.3  0.4   0:05.00 ibus-daemon     
+ 1738 lab1      20   0  206860   6420   5788 S   0.3  0.3   0:00.54 at-spi2-registr 
+ 1741 lab1      20   0  188384   5396   5056 S   0.3  0.3   0:01.43 ibus-engine-sim 
+    1 root      20   0  119592   3736   2436 S   0.0  0.2   0:00.94 systemd         
+    2 root      20   0       0      0      0 S   0.0  0.0   0:00.00 kthreadd        
+    3 root      20   0       0      0      0 S   0.0  0.0   0:00.01 ksoftirqd/0     
+    5 root       0 -20       0      0      0 S   0.0  0.0   0:00.00 kworker/0:0H    
+    7 root      20   0       0      0      0 S   0.0  0.0   0:00.84 rcu_sched       
+    8 root      20   0       0      0      0 S   0.0  0.0   0:00.00 rcu_bh          
+    9 root      rt   0       0      0      0 S   0.0  0.0   0:00.00 migration/0     
+   10 root      rt   0       0      0      0 S   0.0  0.0   0:00.00 watchdog/0      
+   11 root      rt   0       0      0      0 S   0.0  0.0   0:00.00 watchdog/1      
+   12 root      rt   0       0      0      0 S   0.0  0.0   0:00.00 migration/1     
+   13 root      20   0       0      0      0 S   0.0  0.0   0:00.01 ksoftirqd/1     
+   15 root       0 -20       0      0      0 S   0.0  0.0   0:00.00 kworker/1:0H    
+   16 root      rt   0       0      0      0 S   0.0  0.0   0:00.00 watchdog/2      
+   17 root      rt   0       0      0      0 S   0.0  0.0   0:00.00 migration/2     
+   18 root      20   0       0      0      0 S   0.0  0.0   0:00.03 ksoftirqd/2     
+   20 root       0 -20       0      0      0 S   0.0  0.0   0:00.00 kworker/2:0H    
+   21 root      rt   0       0      0      0 S   0.0  0.0   0:00.00 watchdog/3      
+   22 root      rt   0       0      0      0 S   0.0  0.0   0:00.00 migration/3     
+   23 root      20   0       0      0      0 S   0.0  0.0   0:00.00 ksoftirqd/3     
+   25 root       0 -20       0      0      0 S   0.0  0.0   0:00.00 kworker/3:0H    
+   26 root      20   0       0      0      0 S   0.0  0.0   0:00.00 kdevtmpfs       
+   27 root       0 -20       0      0      0 S   0.0  0.0   0:00.00 netns           
+   28 root       0 -20       0      0      0 S   0.0  0.0   0:00.00 perf            
+   29 root      20   0       0      0      0 S   0.0  0.0   0:00.00 khungtaskd      
+   30 root       0 -20       0      0      0 S   0.0  0.0   0:00.00 writeback       
+   31 root      25   5       0      0      0 S   0.0  0.0   0:00.00 ksmd            
+   32 root      39  19       0      0      0 S   0.0  0.0   0:00.00 khugepaged      
+   33 root       0 -20       0      0      0 S   0.0  0.0   0:00.00 crypto          
+   34 root       0 -20       0      0      0 S   0.0  0.0   0:00.00 kintegrityd     
+   35 root       0 -20       0      0      0 S   0.0  0.0   0:00.00 bioset          
+   36 root       0 -20       0      0      0 S   0.0  0.0   0:00.00 kblockd         
+   37 root       0 -20       0      0      0 S   0.0  0.0   0:00.00 ata_sff         
+   38 root       0 -20       0      0      0 S   0.0  0.0   0:00.00 md              
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ ps
+  PID TTY          TIME CMD
+ 3900 pts/11   00:00:00 bash
+ 4876 pts/11   00:00:00 ps
+lab1@lab1-OptiPlex-390:~/Desktop/Akash$ 
+

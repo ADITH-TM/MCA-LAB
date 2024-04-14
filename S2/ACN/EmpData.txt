@@ -1,0 +1,9 @@
+Employee No : 1
+Employee Name : akash
+Basic Salary : 6000
+HRA : 1080
+DA : 2100
+PF : 780
+TA : 600
+Gross Salary : 10560
+Net Salary : 9780
